@@ -20,7 +20,7 @@ This API provides **authentication** and **user account management** features us
 
 ## 🛠️ Technologies Used
 
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)  
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)  
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
 
@@ -30,5 +30,13 @@ This API provides **authentication** and **user account management** features us
 
 ### 1️⃣ Clone the repository:
 ```bash
-git clone https://github.com/yourusername/AuthAPI.git
-```
+git clone https://github.com/Hugolelis/PartyAPI.git
+````
+### 2️⃣ Install dependencies:
+```bash
+npm i
+````
+### 3️⃣ Start project: 
+```bash
+npm start
+````

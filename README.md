@@ -30,7 +30,7 @@ This API provides **authentication** and **user account management** features us
 
 ### 1️⃣ Clone the repository:
 ```bash
-git clone https://github.com/Hugolelis/PartyAPI.git
+git clone https://github.com/Hugolelis/AuthAPI.git
 ````
 ### 2️⃣ Install dependencies:
 ```bash

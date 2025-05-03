@@ -12,9 +12,9 @@ This API provides **authentication** and **user account management** features us
 ## 🚀 Features
 
 ### 👤 Account Features  
-- ✅ Register a new user  
-- ✅ Log in with JWT authentication  
-- ✅ Update user account information  
+1️⃣ **Register a user account**  
+2️⃣ **Log in to an account**  
+3️⃣ **Edit or delete account**
 
 ---
 

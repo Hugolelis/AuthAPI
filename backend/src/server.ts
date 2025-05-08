@@ -2,28 +2,39 @@
 import 'dotenv/config';
 
 // modules
-import Fastify, { FastifyInstance } from 'fastify';
+import fastify, { FastifyInstance } from 'fastify';
 import cors from '@fastify/cors';
 import fastifyStatic from '@fastify/static';
 import path from 'path';
 
 // consts
-const app: FastifyInstance = Fastify({ logger: false })
+const app: FastifyInstance = fastify({ 
+    logger: {
+        transport: {
+            target: 'pino-pretty'
+        }
+    }
+})
+
 const PORT: number = process.env.PORT
+const HOST = process.env.HOST
+
+// file
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const publicPath = path.join(__dirname, 'public');
+
 
 // configs
 await app.register(cors)
 
-await app.register(fastifyStatic, { root: path.join(__dirname, 'public'),  prefix: '/public/' })
+await app.register(fastifyStatic, { root: publicPath,  prefix: '/public/' })
 
 // routes
 
 
 // conn 
 try {
-    app.listen({port: PORT})
-    console.log(`Server listening on port ${PORT}`)
+    app.listen({host: HOST,port: PORT})
 } catch(e) {
-    console.log(e)
+    app.log.error(e)
 }

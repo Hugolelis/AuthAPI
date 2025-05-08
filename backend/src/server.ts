@@ -23,14 +23,17 @@ const HOST = process.env.HOST
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const publicPath = path.join(__dirname, 'public');
 
-
 // configs
 await app.register(cors)
 
 await app.register(fastifyStatic, { root: publicPath,  prefix: '/public/' })
 
 // routes
+import { authRoutes } from './routes/authRoutes';
+app.register(authRoutes, { prefix: '/api/auth'})
 
+import { userRoutes } from './routes/userRoutes';
+app.register(userRoutes, { prefix: '/api/user' })
 
 // conn 
 try {

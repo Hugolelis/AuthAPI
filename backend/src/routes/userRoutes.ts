@@ -7,4 +7,5 @@ import { UserController } from "../controllers/UserController";
 // router
 export async function userRoutes(fastify: FastifyInstance, options: FastifyPluginOptions) {
     fastify.put('/update', UserController.update)
+    fastify.delete('/delete', UserController.delete)
 }

@@ -36,8 +36,11 @@ import { userRoutes } from './routes/userRoutes';
 app.register(userRoutes, { prefix: '/api/user' })
 
 // conn 
+import { main } from './connection/mongo';
+main().catch(e => console.log(e))
+
 try {
-    app.listen({host: HOST,port: PORT})
+    app.listen({host: HOST, port: PORT})
 } catch(e) {
     app.log.error(e)
 }

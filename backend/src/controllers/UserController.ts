@@ -1,10 +1,10 @@
 // models
 import { User } from "../models/User";
-import { FastifyRequest, FastifyReply } from 'fastify'
 
 // modules
 import bcrypt from 'bcrypt'
 import fastifyJwt from "@fastify/jwt";
+import { FastifyRequest, FastifyReply } from 'fastify'
 
 // helpers
 
@@ -13,7 +13,7 @@ export class UserController {
 
     }
     
-    static async deleteUser(req: FastifyRequest , reply: FastifyReply) {
+    static async delete(req: FastifyRequest , reply: FastifyReply) {
 
     }
 }

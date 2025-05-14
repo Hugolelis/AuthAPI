@@ -8,13 +8,21 @@ import { FastifyRequest, FastifyReply } from 'fastify'
 // interfaces
 import { UserRegisterForm } from "../helpers/interfaces/UserRegisterForm";
 import { UserCreate } from "../helpers/interfaces/UserCreate";
+import { UserLoginForm } from "../helpers/interfaces/UserLoginForm";
+import { UserSafeData } from "../helpers/interfaces/UserSafe";
 
 // helpers
 import { createUserToken } from "../helpers/utils/create-user-token";
 
 export class AuthController {
-    static async test(req: FastifyRequest, reply: FastifyReply ) {
-        return reply.code(200).send([{ teste: 'Testando' }])
+    static async findAllUsers(req: FastifyRequest, reply: FastifyReply ) {
+        try {
+            const users = await User.find().select('-password')
+            return reply.code(200).send([{ status: 200, message: 'Trazendo todos usuários cadastrados no banco', error: false, data: users }])
+        } catch(e) {
+            reply.status(500).send({ status: 500, message: e, error: true })
+        }
+
     }
 
     static async register(req: FastifyRequest, reply: FastifyReply ) {
@@ -53,14 +61,47 @@ export class AuthController {
         try {
             const newUser: UserCreate = await user.save()
             const token = await createUserToken(newUser, req, reply)
-            reply.code(201).send({ status: 201, message: 'Registro feito com sucesso!', error: false, data: newUser, token })
-            return
+            return reply.code(201).send({ status: 201, message: 'Registro feito com sucesso!', error: false, data: newUser, token })
+            
         } catch(e) {
             reply.code(500).send({ status: 500, message: e, error: true})
         }
     }
 
     static async login(req: FastifyRequest, reply: FastifyReply ) {
-        
+        try {
+            const { email, password } = req.body as UserLoginForm || { }
+
+            // check datas
+            if(!email || !password) {
+                return reply.code(400).send({ status: 400, message: 'Preencha todos os campos!', error: true })
+            }
+
+            // check if user exist
+            const user = await User.findOne({ email: email })
+
+            if(!user) {
+                return reply.code(400).send({ status: 400, message: 'O email não está cadastrado!', error: true })
+            }
+
+            // check password match
+            const checkPassword = await bcrypt.compare(password, user.password)
+
+            if(!checkPassword) {
+                return reply.code(400).send({ status: 400, message: 'A senha ou email estão incorretos!', error: true })
+            }
+
+            const safeUser: UserSafeData = {
+                _id: user._id,
+                name: user.name,
+                email: user.email
+            }
+
+            const token = await createUserToken(user, req, reply)
+
+            return reply.code(201).send({ status: 201, message: 'Login feito com sucesso!', error: false, data: safeUser, token: token })
+        } catch(e) {
+            reply.code(500).send({ status: 500, message: e, error: true})
+        }
     }
 }

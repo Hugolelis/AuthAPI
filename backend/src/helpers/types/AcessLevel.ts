@@ -1,0 +1,1 @@
+export type AccessLevel = 'user' | 'admin' | 'root';

@@ -5,6 +5,7 @@ import 'dotenv/config';
 import fastify, { FastifyInstance } from 'fastify';
 import cors from '@fastify/cors';
 import fastifyStatic from '@fastify/static';
+import fastifyJwt from "@fastify/jwt";
 import path from 'path';
 
 // consts
@@ -16,7 +17,7 @@ const app: FastifyInstance = fastify({
     }
 })
 
-const PORT: number = process.env.PORT
+const PORT = process.env.PORT
 const HOST = process.env.HOST
 
 // file
@@ -27,6 +28,8 @@ const publicPath = path.join(__dirname, 'public');
 await app.register(cors)
 
 await app.register(fastifyStatic, { root: publicPath,  prefix: '/public/' })
+
+app.register(fastifyJwt, { secret: process.env.SECRET })
 
 // routes
 import { authRoutes } from './routes/authRoutes';

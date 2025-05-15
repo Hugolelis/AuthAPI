@@ -1,5 +1,7 @@
 // module
 import { FastifyRequest, FastifyReply } from 'fastify'
+
+// interfaces
 import { UserCreate } from '../interfaces/UserCreate'
 
 export const createUserToken = async(user: UserCreate, req: FastifyRequest, reply: FastifyReply) => {

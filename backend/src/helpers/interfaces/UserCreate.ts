@@ -1,7 +1,7 @@
 // modules
 import mongoose from "mongoose";
 
-// enums
+// types
 import { AccessLevel } from "../types/AcessLevel";
 
 export interface UserCreate {

@@ -7,7 +7,7 @@ import { AdminController } from "../controllers/AdminController";
 // middlewares
 import { verifyToken } from "../middlewares/verify-token";
 import { verifyAcessAdmin } from "../middlewares/verify-acess-admin";
-import { verifyAcessRoot } from "../middlewares/file-upload";
+import { verifyAcessRoot } from "../middlewares/verify-acess-root";
 
 // router
 export async function adminRoutes(fastify: FastifyInstance, options: FastifyPluginOptions) {

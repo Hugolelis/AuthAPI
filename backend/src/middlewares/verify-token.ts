@@ -4,7 +4,7 @@ import { FastifyRequest, FastifyReply } from "fastify";
 // helpers
 import { getToken } from "../helpers/utils/get-token";
 
-export const verifyToken = async (req: FastifyRequest, reply: FastifyReply, done: () => void) => {
+export const verifyToken = async (req: FastifyRequest, reply: FastifyReply) => {
     if(!req.headers.authorization) return reply.code(401).send({ status: 401, message: 'Acesso negado!', error: true })
 
     const token = getToken(req)
@@ -14,7 +14,7 @@ export const verifyToken = async (req: FastifyRequest, reply: FastifyReply, done
         const verified = await req.jwtVerify() as { id: string, name: string };
         req.user = verified
         
-        done()
+        return
     } catch(e) {
         reply.code(401).send({ status: 401, message: 'Token inválido!', error: true })
     }

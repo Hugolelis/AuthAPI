@@ -6,11 +6,13 @@ import { AdminController } from "../controllers/AdminController";
 
 // middlewares
 import { verifyToken } from "../middlewares/verify-token";
+import { verifyAcessAdmin } from "../middlewares/verify-acess-admin";
+import { verifyAcessRoot } from "../middlewares/file-upload";
 
 // router
 export async function adminRoutes(fastify: FastifyInstance, options: FastifyPluginOptions) {
-    fastify.post('/giveAcessLevel', { preHandler: verifyToken }, AdminController.giveAcessLevel)
+    fastify.post('/giveAcessLevel', { preHandler: [verifyToken, verifyAcessRoot]  }, AdminController.giveAcessLevel)
 
-    fastify.get('/findAdminUsers', { preHandler: verifyToken }, AdminController.findAdminUsers)
-    fastify.get('/findAllUsers', { preHandler: verifyToken }, AdminController.findAllUsers)
+    fastify.get('/findAdminUsers', { preHandler: [verifyToken, verifyAcessAdmin] }, AdminController.findAdminUsers)
+    fastify.get('/findAllUsers', { preHandler: [verifyToken, verifyAcessAdmin] }, AdminController.findAllUsers)
 }

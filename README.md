@@ -16,9 +16,9 @@ This API provides **authentication** and **user account management** features us
 2️⃣ **Log in to an account**  
 3️⃣ **Edit or delete account**
 
-###🛡️ Admin Panel
-1️⃣ **Search user accounts in the system**
-2️⃣ **Update user access level (user, admin, root)**
+### 🛡️ Admin Panel
+1️⃣ **Search user accounts in the system**  
+2️⃣ **Update user access level (user, admin, root)**  
 
 ---
 

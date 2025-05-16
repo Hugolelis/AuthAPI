@@ -15,15 +15,6 @@ import { UserSafeData } from "../helpers/interfaces/UserSafe";
 import { createUserToken } from "../helpers/utils/create-user-token";
 
 export class AuthController {
-    static async findAllUsers(req: FastifyRequest, reply: FastifyReply ) {
-        try {
-            const users = await User.find().select('-password')
-            return reply.code(200).send([{ status: 200, message: 'Trazendo todos usuários cadastrados no banco', error: false, data: users }])
-        } catch(e) {
-            reply.status(500).send({ status: 500, message: e, error: true })
-        }
-    }
-
     static async register(req: FastifyRequest, reply: FastifyReply ) {
         const { name, email, password, confirmPassword } = req.body as UserRegisterForm || { }
 

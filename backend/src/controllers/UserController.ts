@@ -61,7 +61,7 @@ export class UserController {
         try {
             // update user
             const updateUser = await User.findOneAndUpdate({ _id: user._id }, { $set: user }, { new: true })
-            return reply.code(201).send({ status: 201, message: 'Atualização feito com sucesso!', error: false, data: updateUser })
+            return reply.code(201).send({ status: 201, message: 'Atualização feita com sucesso!', error: false, data: updateUser })
 
         } catch(e) {
             reply.code(500).send({ status: 500, message: e, error: true})

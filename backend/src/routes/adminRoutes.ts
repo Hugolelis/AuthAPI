@@ -9,7 +9,8 @@ import { verifyToken } from "../middlewares/verify-token";
 
 // router
 export async function adminRoutes(fastify: FastifyInstance, options: FastifyPluginOptions) {
-    fastify.post('/GiveAcessLevel', { preHandler: verifyToken }, AdminController.GiveAcessLevel)
+    fastify.post('/giveAcessLevel', { preHandler: verifyToken }, AdminController.giveAcessLevel)
 
-    fastify.get('/viewAdminAccounts', { preHandler: verifyToken }, AdminController.viewAdminAccounts)
+    fastify.get('/findAdminUsers', { preHandler: verifyToken }, AdminController.findAdminUsers)
+    fastify.get('/findAllUsers', { preHandler: verifyToken }, AdminController.findAllUsers)
 }

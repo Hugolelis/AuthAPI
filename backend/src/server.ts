@@ -38,6 +38,9 @@ app.register(authRoutes, { prefix: '/api/auth'})
 import { userRoutes } from './routes/userRoutes';
 app.register(userRoutes, { prefix: '/api/user' })
 
+import { adminRoutes } from './routes/adminRoutes';
+app.register(adminRoutes, { prefix: '/api/admin/' })
+
 // conn 
 import { main } from './connection/mongo';
 main().catch(e => console.log(e))

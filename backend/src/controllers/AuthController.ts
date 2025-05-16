@@ -22,7 +22,6 @@ export class AuthController {
         } catch(e) {
             reply.status(500).send({ status: 500, message: e, error: true })
         }
-
     }
 
     static async register(req: FastifyRequest, reply: FastifyReply ) {
@@ -99,7 +98,7 @@ export class AuthController {
 
             const token = await createUserToken(user, req, reply)
 
-            return reply.code(201).send({ status: 201, message: 'Login feito com sucesso!', error: false, data: safeUser, token: token })
+            return reply.code(201).send({ status: 201, message: 'Login feita com sucesso!', error: false, data: safeUser, token: token })
         } catch(e) {
             reply.code(500).send({ status: 500, message: e, error: true})
         }

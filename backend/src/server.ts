@@ -50,7 +50,7 @@ app.register(adminRoutes, { prefix: '/api/admin/' })
 
 // conn 
 import { main } from './connection/mongo';
-main().catch(e => console.log(e))
+main().catch(e => app.log.error(e))
 
 try {
     app.listen({host: HOST, port: PORT})

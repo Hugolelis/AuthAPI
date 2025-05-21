@@ -1,4 +1,4 @@
-# 🚀 Project Name
+# 🚀 Authentication API
 
 ![Version](https://img.shields.io/badge/version-v1.0.0-blue.svg) ![Status](https://img.shields.io/badge/status-complete-brightgreen.svg) ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
@@ -9,15 +9,15 @@
 
 ## 📚 About
 
-This is a RESTful API designed to handle [brief project description], such as authentication, data management, and integration with third-party services.
+This is a RESTful API designed to handle user authentication, including registration, login, JWT-based session management, and secure password hashing using bcrypt. It supports modern best practices and is easily integrable with frontend applications or third-party services.
 
 ---
 
 ## 🧰 Tech Stack
 
-- ⚙️ Node.js & Express.js  
+- ⚙️ Node.js & Fastify 
 - 📘 TypeScript  
-- 🗃️ MongoDB / PostgreSQL  
+- 🗃️ MongoDB  
 - 🔐 JWT for Authentication
 - 🧂 bcrypt for Password Hashing 
 
@@ -26,14 +26,23 @@ This is a RESTful API designed to handle [brief project description], such as au
 ## 📂 Project Structure
 
 ```bash
-📦 src
-├── config/
-├── controllers/
-├── middlewares/
-├── models/
-├── routes/
-├── services/
-└── utils/
+📦 backend
+|  | ├── public/
+|      | └── imgs/
+|        | ├── others
+|        | └── users
+|  | └──  src/
+|  | ├── connection/
+|  | ├── controllers/
+|  | ├── helpers/
+|      | ├── interfaces
+|      | ├── types
+|      | └── utils
+|  | ├── middlewares/
+|  | ├── models/
+|  | ├── routes/
+|  | └── server.ts
+
 ```
 ---
 

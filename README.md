@@ -50,29 +50,26 @@ This is a RESTful API designed to handle user authentication, including registra
 
 ### 🔐 AuthController
 
-| Method | Route         | Description             |
-|--------|---------------|-------------------------|
-| POST   | /api/login    | Authenticate user       |
-| POST   | /api/register | Register a new user     |
-| GET    | /api/profile  | Get logged-in user data |
+| Method | Route              | Description                   |
+| ------ | ------------------ | ----------------------------- |
+| POST   | /api/auth/register | Register a new user           |
+| POST   | /api/auth/login    | Authenticate and login a user |
 
 ###  👤 UserController
 
-| Method | Route         | Description             |
-|--------|---------------|-------------------------|
-| GET    | /api/users    | Get all users           |
-| GET    | /api/users/:id| Get user by ID          |
-| PUT    | /api/users/:id| Update user             |
-| DELETE | /api/users/:id| Delete user             |
+| Method | Route            | Description             |
+| ------ | ---------------- | ----------------------- |
+| PUT    | /api/user/update | Update user information |
+| DELETE | /api/user/delete | Delete the current user |
+
 
 ###  🛡️ AdminController 
 
-| Method | Route             | Description             |
-|--------|-------------------|-------------------------|
-| GET    | /api/products     | List all products       |
-| POST   | /api/products     | Create a new product    |
-| PUT    | /api/products/:id | Update a product        |
-| DELETE | /api/products/:id | Delete a product        |
+| Method | Route                      | Description                            |
+| ------ | -------------------------- | -------------------------------------- |
+| GET    | /api/admin/findAdminUsers  | Retrieve all users with admin access   |
+| GET    | /api/admin/findAllUsers    | Retrieve all registered users          |
+| POST   | /api/admin/giveAccessLevel | Assign or update a user's access level |
 
 ---
 

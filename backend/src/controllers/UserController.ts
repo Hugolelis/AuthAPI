@@ -21,7 +21,7 @@ export class UserController {
 
         // check datas 
         if(!name || !email || !password || !confirmPassword) {
-            return reply.code(400).send({ status: 400, message: 'Preencha todos os campos!', error: true })
+            return reply.code(400).send({ status: 400, message: 'Preencha todos os campos obrigatórios!', error: true })
         }
 
         // check user

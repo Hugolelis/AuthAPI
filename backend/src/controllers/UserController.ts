@@ -14,6 +14,7 @@ import { UserUpadteForm } from "../helpers/interfaces/UserUpdateForm";
 // helpers
 import { getToken } from "../helpers/utils/get-token";
 import { getUserByToken } from "../helpers/utils/get-user-by-token"
+import { createUserToken } from "../helpers/utils/create-user-token";
 
 export class UserController {
     static async update(req: FastifyRequest , reply: FastifyReply) {
@@ -42,7 +43,6 @@ export class UserController {
             return reply.code(400).send({ status: 400, message: 'A senha está incorreta!', error: true })
         }
 
-
         // check token datas with user datas
         const token = getToken(req)
         const userTokenData = await getUserByToken(token, req, reply)
@@ -63,7 +63,9 @@ export class UserController {
         const file = (req as FastifyRequest & { file: Express.Multer.File }).file
         let photo = null
 
-        if (file) {
+        console.log('consolado' + file)
+
+        if(file && file.originalname) {
             const folder = 'users'
             const uploadPath = path.join('public', 'imgs', folder)
 
@@ -80,11 +82,13 @@ export class UserController {
 
         user.name = name
         user.photo = photo
+        
+        const newToken = await createUserToken(user, req, reply)
 
         try {
             // update user
             const updateUser = await User.findOneAndUpdate({ _id: user._id }, { $set: user }, { new: true })
-            return reply.code(201).send({ status: 201, message: 'Atualização feita com sucesso!', error: false, data: updateUser })
+            return reply.code(201).send({ status: 201, message: 'Atualização feita com sucesso!', error: false, data: updateUser, token: newToken })
 
         } catch(e) {
             reply.code(500).send({ status: 500, message: e, error: true})

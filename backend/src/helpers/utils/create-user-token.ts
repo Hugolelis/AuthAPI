@@ -8,8 +8,11 @@ export const createUserToken = async(user: UserCreate, req: FastifyRequest, repl
     try {
         // create token
         const token = await reply.jwtSign({
+            id: user._id,
             name: user.name,
-            id: user._id
+            email: user.email,
+            photo: user.photo
+            
         })
 
         return token

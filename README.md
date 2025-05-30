@@ -1,46 +1,104 @@
-![Version](https://img.shields.io/badge/version-v1.0.0-blue.svg)
-![Status](https://img.shields.io/badge/status-auth--only-brightgreen.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+# 🚀 Authentication API
 
-# 🔐 Auth API
+![Version](https://img.shields.io/badge/version-v1.0.0-blue.svg) ![Status](https://img.shields.io/badge/status-complete-brightgreen.svg) ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-### 📘 Description
-This API provides **authentication** and **user account management** features using **Node.js**, **TypeScript**, and **MySQL**. Following the **RESTful** architectural pattern, it offers secure endpoints with **JWT authentication** to register, log in, and update user data.
+
+> Powerful and scalable backend API built with modern technologies.
 
 ---
 
-## 🚀 Features
+## 📚 About
 
-### 👤 Account Features  
-1️⃣ **Register a user account**  
-2️⃣ **Log in to an account**  
-3️⃣ **Edit or delete account**
-
-### 🛡️ Admin Panel
-1️⃣ **Search user accounts in the system**  
-2️⃣ **Update user access level (user, admin, root)**  
+This is a RESTful API designed to handle user authentication, including registration, login, JWT-based session management, and secure password hashing using bcrypt. It supports modern best practices and is easily integrable with frontend applications or third-party services.
 
 ---
 
-## 🛠️ Technologies Used
+## 🧰 Tech Stack
 
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)  
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)  
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+- ⚙️ Node.js & Fastify 
+- 📘 TypeScript  
+- 🗃️ MongoDB  
+- 🔐 JWT for Authentication
+- 🧂 bcrypt for Password Hashing 
 
 ---
 
-## 📂 How to Run the Project
+## 📂 Project Structure
 
-### 1️⃣ Clone the repository:
+```bash
+📦 backend
+|  | ├── public/
+|      | └── imgs/
+|        | ├── others
+|        | └── users
+|  | └──  src/
+|  | ├── connection/
+|  | ├── controllers/
+|  | ├── helpers/
+|      | ├── interfaces
+|      | ├── types
+|      | └── utils
+|  | ├── middlewares/
+|  | ├── models/
+|  | ├── routes/
+|  | └── server.ts
+
+```
+---
+
+## 📬 Main Endpoints and Features
+
+### 🔐 AuthController
+
+| Method | Route              | Description                   |
+| ------ | ------------------ | ----------------------------- |
+| POST   | /api/auth/register | Register a new user           |
+| POST   | /api/auth/login    | Authenticate and login a user |
+
+###  👤 UserController
+
+| Method | Route            | Description             |
+| ------ | ---------------- | ----------------------- |
+| PUT    | /api/user/update | Update user information |
+| DELETE | /api/user/delete | Delete the current user |
+
+
+###  🛡️ AdminController 
+
+| Method | Route                      | Description                            |
+| ------ | -------------------------- | -------------------------------------- |
+| GET    | /api/admin/findAdminUsers  | Retrieve all users with admin access   |
+| GET    | /api/admin/findAllUsers    | Retrieve all registered users          |
+| POST   | /api/admin/giveAccessLevel | Assign or update a user's access level |
+
+---
+
+## 🖥️ Running the Project
+
+### 🔧 1. Clone the Repository
+
 ```bash
 git clone https://github.com/Hugolelis/AuthAPI.git
-````
-### 2️⃣ Install dependencies:
+cd AuthAPI
+```
+
+### 📦 2. Install Dependencies
+
 ```bash
-npm i
-````
-### 3️⃣ Start project: 
+npm install
+```
+
+### ⚙️ 3. Set Up Environment Variables (.env)
+
+```bash
+DB_URI=mongodb://localhost:27017/authAPI
+PORT=3000
+HOST=0.0.0.0
+SECRET=secreta123
+```
+
+### ▶️ 4. Start the Server
+
 ```bash
 npm start
-````
+```

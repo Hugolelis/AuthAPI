@@ -48,10 +48,16 @@ export class AuthController {
             acess: 'user'
         })
 
+        const safeUser: UserSafeData = {
+            _id: user._id,
+            name: user.name,
+            email: user.email
+        }
+
         try {
             const newUser: UserCreate = await user.save()
             const token = await createUserToken(newUser, req, reply)
-            return reply.code(201).send({ status: 201, message: 'Registro feito com sucesso!', error: false, data: newUser, token })
+            return reply.code(201).send({ status: 201, message: 'Registro feito com sucesso!', error: false, data: safeUser, token })
             
         } catch(e) {
             reply.code(500).send({ status: 500, message: e, error: true})

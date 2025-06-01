@@ -27,21 +27,21 @@ This is a RESTful API designed to handle user authentication, including registra
 
 ```bash
 📦 backend
-|  | ├── public/
-|      | └── imgs/
-|        | ├── others
-|        | └── users
-|  | └──  src/
-|  | ├── connection/
-|  | ├── controllers/
-|  | ├── helpers/
-|      | ├── interfaces
-|      | ├── types
-|      | └── utils
-|  | ├── middlewares/
-|  | ├── models/
-|  | ├── routes/
-|  | └── server.ts
+├── 📁 public/
+│   └── 📁 imgs/
+│       ├── 📁 others/
+│       └── 📁 users/
+├── 📁 src/
+│   ├── 📁 connection/
+│   ├── 📁 controllers/
+│   ├── 📁 helpers/
+│   │   ├── 📁 interfaces/
+│   │   ├── 📁 types/
+│   │   └── 📁 utils/
+│   ├── 📁 middlewares/
+│   ├── 📁 models/
+│   ├── 📁 routes/
+│   └── server.ts
 
 ```
 ---
